@@ -1,24 +1,22 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import {Routes, Route} from 'react-router-dom';
+import React from 'react';
+import Home from './components/home/Home';
+import Nav from './components/nav/Nav';
+import AdminPostQuizzes from './components/adminPostQuizzes/AdminPostQuizzes';
+
 
 export default function App() {
-  const [listOfQuizzes, setListOfQuizzes] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:2000/quizzes").then((response) => {
-      setListOfQuizzes(response.data)
-    })
-  }, [])
+  
 
 
   return (
     <div className='App'>
-      {listOfQuizzes.map((val, key) => (
-        <div key={val.id}>
-          <h1>{val.quizName}</h1>
-        </div>
-      ))}
+      <Nav />
+      <Routes>
+        <Route element={<Home />} path='/' />
+        <Route element={<AdminPostQuizzes />} path='admin-post-quiz' />
+      </Routes>
     </div>
   )
 }

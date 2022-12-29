@@ -1,0 +1,23 @@
+.create-quiz-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+.create-quiz-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.create-quiz-form label{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+.create-quiz-form input{
+    font-size: 1.25rem;
+}
+.create-quiz-form span{
+    color: red;
+}
