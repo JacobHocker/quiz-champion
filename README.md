@@ -6,3 +6,8 @@
 - Express.js
 - MySQL
 - Sequelizer
+
+## NPM Packages Used
+- Formik
+- Yup
+- React Router Dom
