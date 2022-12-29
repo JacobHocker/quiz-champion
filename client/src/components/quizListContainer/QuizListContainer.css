@@ -1,0 +1,18 @@
+.quiz-list-container{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.quiz-list-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gold;
+    background-color: rgb(116, 106, 106);
+}
+.quiz-card-thumb{
+    width: 10rem;
+}

@@ -8,6 +8,9 @@ export default function Nav() {
             <Link to='/'>
                 <h3>Home</h3>
             </Link>
+            <Link to='/quizzes'>
+                <h3>Quizzes</h3>
+            </Link>
             <Link to='/admin-post-quiz'>
                 <h3>Post Quiz</h3>
             </Link>

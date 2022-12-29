@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AdminPostQuizzes.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
 export default function AdminPostQuizzes() {
+    let navigate = useNavigate();
 
     const initialValues = {
         quizName: "",
@@ -22,7 +24,7 @@ export default function AdminPostQuizzes() {
 
     const onSubmit = (data) => {
         axios.post("http://localhost:2000/quizzes", data).then((response) => {
-            console.log("Success")
+            navigate('/quizzes')
         })
     }
     return (
