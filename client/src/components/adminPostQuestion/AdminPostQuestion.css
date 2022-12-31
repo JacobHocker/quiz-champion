@@ -1,0 +1,17 @@
+.create-question-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+.create-question-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.create-question-form label{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}

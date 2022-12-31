@@ -6,6 +6,7 @@ import Nav from './components/nav/Nav';
 import AdminPostQuizzes from './components/adminPostQuizzes/AdminPostQuizzes';
 import QuizListContainer from './components/quizListContainer/QuizListContainer';
 import QuizDisplayContainer from './components/quizDisplayContainer/QuizDisplayContainer';
+import AdminPostQuestion from './components/adminPostQuestion/AdminPostQuestion';
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <Route element={<QuizListContainer />} path='quizzes' />
         <Route element={<QuizDisplayContainer />} path='quiz/:id' />
         <Route element={<AdminPostQuizzes />} path='admin-post-quiz' />
+        <Route element={<AdminPostQuestion />} path='admin-post-question' />
       </Routes>
     </div>
   )

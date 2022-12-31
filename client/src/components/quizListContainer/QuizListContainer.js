@@ -18,6 +18,7 @@ export default function QuizListContainer() {
                 <div className='quiz-list-card' key={val.id}
                 onClick={() => {navigate(`/quiz/${val.id}`)}}>
                     <h1 className='quiz-card-name'>{val.quizName}</h1>
+                    <h1>Quiz ID #: {val.id}</h1>
                     <img src={val.quizImage} alt={val.quizName} className='quiz-card-thumb'/>
                     <h3 className='quiz-card-cat'>{val.quizCategory}</h3>
                     <p className='quiz-card-desc'>{val.quizDescription}</p>
