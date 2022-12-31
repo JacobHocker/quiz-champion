@@ -1,7 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-
-    const Quizzes = sequelize.define("Quizzes", {
+    const Quizs = sequelize.define("Quizs", {
         
         quizName: {
             type: DataTypes.STRING,
@@ -21,5 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
 
-    return Quizzes
+    Quizs.associate = (models) => {
+        Quizs.hasMany(models.Questions,{
+            onDelete: 'cascade',
+        })
+    }
+    return Quizs
 }

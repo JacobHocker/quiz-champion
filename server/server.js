@@ -10,9 +10,10 @@ const db = require("./models")
 
 
 //! Routers
-const quizRouter = require('./routes/Quizzes')
+const quizRouter = require('./routes/Quizs')
 app.use("/quizzes", quizRouter)
-
+const questionRouter = require('./routes/Questions')
+app.use("/questions", questionRouter)
 
 db.sequelize.sync().then(() => {
         app.listen(2000, () => {
