@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import QuizPlayContainer from '../quizPlayContainer/QuizPlayContainer';
+
+
+
 
 export default function QuizDisplayContainer() {
     let { id } = useParams();
@@ -24,6 +28,7 @@ export default function QuizDisplayContainer() {
                 <h3 key={val.id}>{val.questionContent}</h3>
             ))}
             </div>
+            <QuizPlayContainer questionList={questionList} />
         </div>
     )
 }

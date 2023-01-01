@@ -25,7 +25,7 @@ export default function AdminPostQuestion() {
             answer: answer,
             QuizId: quizId
         })
-        .then(() => { console.log("itworked")})
+        .then(() => { navigate("/quizzes")})
     }
     return (
         <div className='create-question-container'>
