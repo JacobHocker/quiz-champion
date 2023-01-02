@@ -4,8 +4,7 @@ import './QuizPlay.css';
 import { QuizContext } from '../../Helpers/Contexts';
 
 export default function QuizPlay({ questionList }) {
-    const { score, setScore, setQuizState } = useContext(QuizContext);
-
+    const { score, setScore, setQuizState, questionCounter, setQuestionCounter } = useContext(QuizContext);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen, setOptionChosen] = useState("");
 
@@ -20,15 +19,18 @@ export default function QuizPlay({ questionList }) {
             setScore(score + 1);
         }
         setCurrentQuestion(currentQuestion + 1);
+        setQuestionCounter(questionCounter + 1);
         setOptionChosen("");
     }
+    console.log(questionCounter)
     return (
         <div className='quiz-play-container'>
             <div className='quiz-play-question'>
                 <h1>{questionList[currentQuestion].questionContent}</h1>
                 {questionList[currentQuestion].questionImage === "N/A" ?
                 <div></div> :
-                <img src={questionList[currentQuestion].questionImage} alt='question-prompt' />}
+                <img src={questionList[currentQuestion].questionImage} alt='question-prompt'
+                className='quiz-play-question-image'/>}
             </div>
             <div className='quiz-play-choices'>
                 <button onClick={() => setOptionChosen("A")} 

@@ -3,8 +3,12 @@ import './QuizStart.css';
 import { QuizContext } from '../../Helpers/Contexts';
 
 export default function QuizStart({ quizObject }) {
-    const { setQuizState } = useContext(QuizContext);
+    const { setQuizState, questionCounter, setQuestionCounter } = useContext(QuizContext);
 
+    const startQuiz = () => {
+        setQuizState("play")
+        setQuestionCounter(questionCounter + 1)
+    }
     return (
         <div className='quiz-start-menu'>
             <div className='quiz-display-header'>
@@ -14,7 +18,7 @@ export default function QuizStart({ quizObject }) {
                 <p>Description: {quizObject.quizDescription}</p>
             </div>
             <h1>Click below to begin the quiz!</h1>
-            <button onClick={() => {setQuizState("play")}} className='quiz-start-button'>
+            <button onClick={startQuiz} className='quiz-start-button'>
                 Start Quiz
             </button>
         </div>

@@ -4,6 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+.quiz-play-question-image{
+    width: 14rem;
+}
 
 .quiz-play-choices{
     margin-top: 1.75rem;
