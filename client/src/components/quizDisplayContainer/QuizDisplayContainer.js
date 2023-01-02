@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './QuizDisplayContainer.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import QuizPlayContainer from '../quizPlayContainer/QuizPlayContainer';
+import QuizStart from '../quizStart/QuizStart';
+import QuizPlay from '../quizPlay/QuizPlay';
+import QuizEnd from '../quizEnd/QuizEnd';
+import { QuizContext } from '../../Helpers/Contexts';
 
 
 
@@ -11,7 +14,8 @@ export default function QuizDisplayContainer() {
     let { id } = useParams();
     let [quizObject, setQuizObject] = useState({});
     let [questionList, setQuestionList] = useState([]);
-
+    let [quizState, setQuizState] = useState("menu");
+    let [score, setScore] = useState(0);
 
     useEffect(() => {
         axios.get(`http://localhost:2000/quizzes/${id}`).then((response) => {
@@ -20,14 +24,17 @@ export default function QuizDisplayContainer() {
         axios.get(`http://localhost:2000/questions/${id}`).then((response) => {
             setQuestionList(response)
         })
-    },[])
+    },[id])
     return (
         <div className='quiz-display-container'>
-            <h1>{quizObject.quizName}</h1>
-            <img src={quizObject.quizImage} alt={quizObject.quizName} className='quiz-display-image'/>
-            <h3>Category: {quizObject.quizCategory}</h3>
-            <p>Description: {quizObject.quizDescription}</p>
-            <QuizPlayContainer questionList={questionList} />
+            <h1>Progress Bar PlaceHolder</h1>
+            <div className='quiz-play-container'>
+                <QuizContext.Provider value={{ quizState, setQuizState, score, setScore}}>
+                    {quizState === "menu" && <QuizStart quizObject={quizObject} />}
+                    {quizState === "play" && <QuizPlay questionList={questionList.data} />}
+                    {quizState === "end" && <QuizEnd questionList={questionList.data} />}
+                </QuizContext.Provider>
+            </div>
         </div>
     )
 }

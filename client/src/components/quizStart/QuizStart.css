@@ -1,6 +1,21 @@
+.quiz-display-header{
+    width: 100%;
+    border-bottom: 2px solid var(--accent);
+}
+.quiz-display-image{
+    width: 12rem;
+}
 .quiz-start-menu{
     margin-top: 2rem;
 }
 .quiz-start-button{
     padding: 1rem;
+    font-size: 1.25rem;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 5px;
+}
+.quiz-start-button:hover{
+    cursor: pointer;
+    background-color: var(--accent-op);
 }

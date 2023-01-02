@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react';
+import {AiOutlineArrowRight} from 'react-icons/ai';
 import './QuizPlay.css';
 import { QuizContext } from '../../Helpers/Contexts';
 
@@ -19,6 +20,7 @@ export default function QuizPlay({ questionList }) {
             setScore(score + 1);
         }
         setCurrentQuestion(currentQuestion + 1);
+        setOptionChosen("");
     }
     return (
         <div className='quiz-play-container'>
@@ -26,27 +28,35 @@ export default function QuizPlay({ questionList }) {
                 <h1>{questionList[currentQuestion].questionContent}</h1>
                 {questionList[currentQuestion].questionImage === "N/A" ?
                 <div></div> :
-                <img src={questionList[currentQuestion].questionImage} alt='question-image-prompt' />}
+                <img src={questionList[currentQuestion].questionImage} alt='question-prompt' />}
             </div>
             <div className='quiz-play-choices'>
-                <button onClick={() => setOptionChosen("A")} className='quiz-option-button'>
-                    {questionList[currentQuestion].optionA}
+                <button onClick={() => setOptionChosen("A")} 
+                className={optionChosen === 'A' ? 'quiz-option-chosen' : 'quiz-option-button'}>
+                    A: {questionList[currentQuestion].optionA}
                 </button>
-                <button onClick={() => setOptionChosen("B")} className='quiz-option-button'>
-                    {questionList[currentQuestion].optionB}
+                <button onClick={() => setOptionChosen("B")} 
+                className={optionChosen === 'B' ? 'quiz-option-chosen' : 'quiz-option-button'}>
+                    B: {questionList[currentQuestion].optionB}
                 </button>
-                <button onClick={() => setOptionChosen("C")} className='quiz-option-button'>
-                    {questionList[currentQuestion].optionC}
+                <button onClick={() => setOptionChosen("C")} 
+                className={optionChosen === 'C' ? 'quiz-option-chosen' : 'quiz-option-button'}>
+                    C: {questionList[currentQuestion].optionC}
                 </button>
-                <button onClick={() => setOptionChosen("D")} className='quiz-option-button'>
-                    {questionList[currentQuestion].optionD}
+                <button onClick={() => setOptionChosen("D")} 
+                className={optionChosen === 'D' ? 'quiz-option-chosen' : 'quiz-option-button'}>
+                    D: {questionList[currentQuestion].optionD}
                 </button>
             </div>
             <div className='quiz-play-next-container'>
                 {currentQuestion === questionList.length - 1 ?
-                <button onClick={finishQuiz}>Finish Quiz</button>
+                <button onClick={finishQuiz} className='quiz-finish'>
+                    Finish Quiz
+                </button>
                 :
-                <button onClick={nextQuestion}>Next Question</button>}
+                <button onClick={nextQuestion} className='quiz-next'>
+                    Next Question <AiOutlineArrowRight />
+                </button>}
             </div>
         </div>
     )

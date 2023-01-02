@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    
 }
 
 .quiz-list-card{
@@ -10,8 +11,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
-    background-image: linear-gradient(to bottom right,var(--secondary), var(--accent), var(--secondary));
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right,var(--primary-dk), var(--primary-lt), var(--primary-dk));
 }
 .quiz-card-thumb{
     width: 10rem;

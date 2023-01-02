@@ -7,9 +7,24 @@ body {
 
 
 :root{
+  /* PRIMARY + VARIATIONS */
   --primary-dk: #5680E9;
-  --secondary: #5AB9EA;
   --primary-lt: #84CEEB;
+
+  /* SECONDARY + VARIATIONS */
+  --secondary: #5AB9EA;
+  
+  /* BACKGROUND + VARIATIONS */
   --bk: #C1C8E4;
+  --bk-darker: #adb4ce;
+
+  /* ACCENTS + VARIATIONS */
   --accent: #8860D0;
+  --accent-op: #8760d0b7;
+
+  /* TEXT COLORS + VARIATIONS */
+  
+  /* GENERAL COLORS */
+  --white: #fff;
+  --black: #000;
 }

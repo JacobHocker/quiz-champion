@@ -12,10 +12,10 @@ export default function Nav() {
                 <h3>Quizzes</h3>
             </Link>
             <Link to='/admin-post-quiz'>
-                <h3>Post Quiz</h3>
+                <h3>Admin Post Quiz</h3>
             </Link>
             <Link to='/admin-post-question'>
-                <h3>Post Question</h3>
+                <h3>Admin Post Question</h3>
             </Link>
         </div>
     )
