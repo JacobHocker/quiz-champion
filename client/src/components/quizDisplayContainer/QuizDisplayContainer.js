@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './QuizDisplayContainer.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import QuizPlayContainer from '../quizPlayContainer/QuizPlayContainer';
@@ -21,13 +22,11 @@ export default function QuizDisplayContainer() {
         })
     },[])
     return (
-        <div>
+        <div className='quiz-display-container'>
             <h1>{quizObject.quizName}</h1>
-            <div className='question-list-container'>
-            {questionList.data && questionList.data.map((val) => (
-                <h3 key={val.id}>{val.questionContent}</h3>
-            ))}
-            </div>
+            <img src={quizObject.quizImage} alt={quizObject.quizName} className='quiz-display-image'/>
+            <h3>Category: {quizObject.quizCategory}</h3>
+            <p>Description: {quizObject.quizDescription}</p>
             <QuizPlayContainer questionList={questionList} />
         </div>
     )

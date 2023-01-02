@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react';
+import './QuizPlay.css';
 import { QuizContext } from '../../Helpers/Contexts';
 
 export default function QuizPlay({ questionList }) {
@@ -28,16 +29,16 @@ export default function QuizPlay({ questionList }) {
                 <img src={questionList[currentQuestion].questionImage} alt='question-image-prompt' />}
             </div>
             <div className='quiz-play-choices'>
-                <button onClick={() => setOptionChosen("A")}>
+                <button onClick={() => setOptionChosen("A")} className='quiz-option-button'>
                     {questionList[currentQuestion].optionA}
                 </button>
-                <button onClick={() => setOptionChosen("B")}>
+                <button onClick={() => setOptionChosen("B")} className='quiz-option-button'>
                     {questionList[currentQuestion].optionB}
                 </button>
-                <button onClick={() => setOptionChosen("C")}>
+                <button onClick={() => setOptionChosen("C")} className='quiz-option-button'>
                     {questionList[currentQuestion].optionC}
                 </button>
-                <button onClick={() => setOptionChosen("D")}>
+                <button onClick={() => setOptionChosen("D")} className='quiz-option-button'>
                     {questionList[currentQuestion].optionD}
                 </button>
             </div>

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import './QuizStart.css';
 import { QuizContext } from '../../Helpers/Contexts';
 
 export default function QuizStart() {
@@ -6,7 +7,10 @@ export default function QuizStart() {
 
     return (
         <div className='quiz-start-menu'>
-            <button onClick={() => {setQuizState("play")}}>Start Quiz</button>
+            <h1>Click below to begin the quiz!</h1>
+            <button onClick={() => {setQuizState("play")}} className='quiz-start-button'>
+                Start Quiz
+            </button>
         </div>
     )
 }

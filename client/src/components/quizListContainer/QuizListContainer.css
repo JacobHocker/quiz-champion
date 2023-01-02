@@ -10,8 +10,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid gold;
-    background-color: rgb(116, 106, 106);
+    border: 1px solid white;
+    background-image: linear-gradient(to bottom right,var(--secondary), var(--accent), var(--secondary));
 }
 .quiz-card-thumb{
     width: 10rem;
