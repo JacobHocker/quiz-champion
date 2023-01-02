@@ -84,7 +84,7 @@ export default function AdminPostQuestion() {
                 type='text'
                 className='post-question-input'
                 onChange={(e) => {setAnswer(e.target.value)}}
-                placeholder='Ex: optionA, optionB, optionC, optionD'
+                placeholder='Ex: A,B,C,D'
                 />
                 <label>QuizID</label>
                 <input 
