@@ -14,6 +14,9 @@ const quizRouter = require('./routes/Quizs')
 app.use("/quizzes", quizRouter)
 const questionRouter = require('./routes/Questions')
 app.use("/questions", questionRouter)
+const userRouter = require('./routes/Users')
+app.use("/auth", userRouter)
+
 
 db.sequelize.sync().then(() => {
         app.listen(2000, () => {

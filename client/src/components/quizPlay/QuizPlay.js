@@ -22,7 +22,7 @@ export default function QuizPlay({ questionList }) {
         setQuestionCounter(questionCounter + 1);
         setOptionChosen("");
     }
-    console.log(questionCounter)
+    
     return (
         <div className='quiz-play-container'>
             <div className='quiz-play-question'>
