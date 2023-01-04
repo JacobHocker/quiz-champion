@@ -1,0 +1,62 @@
+.user-registration-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-register-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.user-register-form label{
+    font-size: 1.5rem;
+}
+
+.create-user-input{
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5rem;
+}
+.create-user-text{
+    font-size: 0.95rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.25rem;
+    resize: none;
+}
+.create-user-select{
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5rem;
+}
+.create-user-select:hover{
+    cursor: pointer;
+}
+
+.register-account-btn-container{
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-submit-btn{
+    font-size: 1rem;
+    padding: 0.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.register-submit-btn:hover{
+    cursor: pointer;
+}
+.to-login-btn{
+    font-size: 1rem;
+    background-color: var(--secondary);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5rem;
+}
+.to-login-btn:hover{
+    cursor: pointer;
+    background-color: var(--primary-dk);
+}

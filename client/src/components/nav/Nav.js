@@ -17,6 +17,9 @@ export default function Nav() {
             <Link to='/admin-post-question'>
                 <h3>Admin Post Question</h3>
             </Link>
+            <Link to='/login'>
+                <button>Login</button>
+            </Link>
         </div>
     )
 }
