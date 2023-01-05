@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './UserLogin.css';
+import { AuthContext } from '../../Helpers/AuthContext';
+
+
 export default function UserLogin({ setUser }) {
     let navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
+    const { setAuthState } = useContext(AuthContext);
 
     const goToRegister = () => {
         navigate('/registration')
@@ -14,18 +18,27 @@ export default function UserLogin({ setUser }) {
     const loginUser = () => {
         const data = { username: username, password: password }
         axios.post("http://localhost:2000/auth/login", data).then((response) => {
-            console.log(response.data)
+            if (response.data.error) {
+                alert(response.data.error)
+            } else {
+                localStorage.setItem("accessToken", response.data);
+                setAuthState(true);
+                navigate("/");
+            }
         })
+        
     }
     return (
         <div className='user-login-container'>
             <div className='user-login-form'>
                 <input 
+                className='user-login-input'
                 type='text' 
                 placeholder='Username' 
                 onChange={(e) => setUsername(e.target.value)}
                 />
                 <input 
+                className='user-login-input'
                 type='password' 
                 placeholder='Password' 
                 onChange={(e) => setPassword(e.target.value)}

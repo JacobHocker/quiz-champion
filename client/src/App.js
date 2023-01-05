@@ -1,6 +1,6 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
 import AdminPostQuizzes from './components/adminPostQuizzes/AdminPostQuizzes';
@@ -9,24 +9,53 @@ import QuizDisplayContainer from './components/quizDisplayContainer/QuizDisplayC
 import AdminPostQuestion from './components/adminPostQuestion/AdminPostQuestion';
 import UserRegistration from './components/userRegistration/UserRegistration';
 import UserLogin from './components/userLogin/UserLogin';
+import axios from 'axios';
+import { AuthContext } from './Helpers/AuthContext';
 
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const [authState, setAuthState] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [userInfo, setUserInfo] = useState({});
 
-
+  useEffect(() => {
+    axios.get("http://localhost:2000/auth/user", { headers: {
+      accessToken: localStorage.getItem("accessToken")
+    },
+  })
+  .then((response) => {
+      if (response.data.error) {
+        setAuthState(false)
+      } else {
+        setAuthState(true)
+        setUserId(response.data.id)
+      }
+    })
+    axios.get(`http://localhost:2000/auth/userInfo/${userId}`)
+    .then((response) => {
+      setUserInfo(response.data)
+    })
+  }, [userId])
+  
+  
   return (
     <div className='App'>
-      <Nav />
-      <Routes>
-        <Route element={<Home />} path='/' />
-        <Route element={<QuizListContainer />} path='quizzes' />
-        <Route element={<QuizDisplayContainer />} path='quiz/:id' />
-        <Route element={<UserRegistration />} path='registration' />
-        <Route element={<UserLogin setUser={setUser} />} path='login' />
-        <Route element={<AdminPostQuizzes />} path='admin-post-quiz' />
-        <Route element={<AdminPostQuestion />} path='admin-post-question' />
-      </Routes>
+      <AuthContext.Provider value={{ authState, setAuthState, userInfo }}>
+        <Nav />
+        { authState === false ? 
+          <UserLogin /> 
+          :
+          <Routes>
+            <Route element={<Home />} path='/' />
+            <Route element={<QuizListContainer />} path='quizzes' />
+            <Route element={<QuizDisplayContainer />} path='quiz/:id' />
+            <Route element={<UserRegistration />} path='registration' />
+            <Route element={<UserLogin  />} path='login' />
+            <Route element={<AdminPostQuizzes />} path='admin-post-quiz' />
+            <Route element={<AdminPostQuestion />} path='admin-post-question' />
+          </Routes>
+        }
+      </AuthContext.Provider>
     </div>
   )
 }

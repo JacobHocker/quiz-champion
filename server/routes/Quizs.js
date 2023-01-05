@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Quizs } = require("../models");
+//const { validateToken } = require("../middlewares/AuthMiddleware");
 
 router.get("/", async (req, res) => {
     const listOfQuizzes =  await Quizs.findAll();

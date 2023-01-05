@@ -1,0 +1,47 @@
+.user-login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.user-login-input{
+    font-size: 1.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5rem;
+}
+.login-submit-btn{
+    margin-top: 1rem;
+    background-color: var(--accent-op);
+    font-size: 1rem;
+    padding: 0.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.login-submit-btn:hover{
+    background-color: var(--accent);
+    cursor: pointer;
+}
+
+.to-register-btn-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.to-register-btn{
+    background-color: var(--primary-lt);
+    font-size: 1rem;
+    padding: 0.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.to-register-btn:hover{
+    cursor: pointer;
+    background-color: var(--primary-dk);
+}

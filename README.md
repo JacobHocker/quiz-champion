@@ -11,6 +11,7 @@
 - Formik
 - Yup
 - React Router Dom
+- Json Web Token
 
 # Functionality Add List:
 - Quiz rating (star rating)

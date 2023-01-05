@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Nav.css';
 import { NavLink as Link } from 'react-router-dom';
+import {AuthContext} from '../../Helpers/AuthContext'
+
 
 export default function Nav() {
+    const { userInfo } = useContext(AuthContext);
+
     return (
         <div className='nav-bar-container'>
             <Link to='/'>
@@ -17,9 +21,7 @@ export default function Nav() {
             <Link to='/admin-post-question'>
                 <h3>Admin Post Question</h3>
             </Link>
-            <Link to='/login'>
-                <button>Login</button>
-            </Link>
+            <h3>{userInfo.username}</h3>
         </div>
     )
 }
