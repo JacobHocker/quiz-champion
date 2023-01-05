@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 export default function Nav() {
-    const { userId, setAuthState } = useContext(AuthContext);
+    const { userId, authState, setAuthState } = useContext(AuthContext);
     const [userInfo, setUserInfo] = useState({});
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function Nav() {
 
     const logout = () => {
         localStorage.removeItem("accessToken")
-        setAuthState(false)
+        setAuthState({ username: "", id: 0, status: false })
     };
     
     return (
@@ -37,6 +37,7 @@ export default function Nav() {
             </Link>
             <div className='user-nav-container'>
                 {userInfo.data && <h3>{userInfo.data.username}</h3>}
+
                 <button onClick={logout}>Logout</button>
             </div>
             

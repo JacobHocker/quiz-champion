@@ -15,8 +15,12 @@ import UserAuthContainer from './components/userAuthContainer/UserAuthContainer'
 
 
 export default function App() {
-  const [authState, setAuthState] = useState(false);
-  const [userId, setUserId] = useState(0);
+  const [authState, setAuthState] = useState({
+    username: "",
+    id: 0,
+    status: false,
+  });
+  
   
   
 
@@ -27,21 +31,25 @@ export default function App() {
   })
   .then((response) => {
       if (response.data.error) {
-        setAuthState(false)
+        setAuthState({ ...authState, status: false })
       } else {
-        setAuthState(true)
-        setUserId(response.data.id)
+        setAuthState({
+          username: response.data.username,
+          id: response.data.id,
+          status: true,
+        })
+        
       }
     })
   }, [])
   
-
+  const userId = authState.id;
   
   return (
     <div className='App'>
       <AuthContext.Provider value={{ authState, setAuthState, userId }}>
         
-        { authState === false ? 
+        { authState.status === false ? 
             <UserAuthContainer />
           :
           <div>
