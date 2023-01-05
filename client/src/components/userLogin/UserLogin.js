@@ -5,15 +5,13 @@ import './UserLogin.css';
 import { AuthContext } from '../../Helpers/AuthContext';
 
 
-export default function UserLogin({ setUser }) {
+export default function UserLogin({ setShowLogin }) {
     let navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const { setAuthState } = useContext(AuthContext);
 
-    const goToRegister = () => {
-        navigate('/registration')
-    }
+    
 
     const loginUser = () => {
         const data = { username: username, password: password }
@@ -49,7 +47,7 @@ export default function UserLogin({ setUser }) {
 
             <div className='to-register-btn-container'>
                 <h3>Don't have an account?</h3>
-                <button onClick={goToRegister} className='to-register-btn'>Register An Account</button>
+                <button onClick={() => setShowLogin(false)} className='to-register-btn'>Register An Account</button>
             </div>
         </div>
     )

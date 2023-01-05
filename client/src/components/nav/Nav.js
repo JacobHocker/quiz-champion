@@ -1,12 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Nav.css';
 import { NavLink as Link } from 'react-router-dom';
-import {AuthContext} from '../../Helpers/AuthContext'
+import {AuthContext} from '../../Helpers/AuthContext';
+import axios from 'axios';
 
 
 export default function Nav() {
-    const { userInfo } = useContext(AuthContext);
+    const { userId, setAuthState } = useContext(AuthContext);
+    const [userInfo, setUserInfo] = useState({});
 
+    useEffect(() => {
+        axios.get(`http://localhost:2000/auth/userInfo/${userId}`)
+        .then((response) => {
+            setUserInfo(response)
+        })
+    }, [])
+
+    const logout = () => {
+        localStorage.removeItem("accessToken")
+        setAuthState(false)
+    };
+    
     return (
         <div className='nav-bar-container'>
             <Link to='/'>
@@ -21,7 +35,11 @@ export default function Nav() {
             <Link to='/admin-post-question'>
                 <h3>Admin Post Question</h3>
             </Link>
-            <h3>{userInfo.username}</h3>
+            <div className='user-nav-container'>
+                {userInfo.data && <h3>{userInfo.data.username}</h3>}
+                <button onClick={logout}>Logout</button>
+            </div>
+            
         </div>
     )
 }

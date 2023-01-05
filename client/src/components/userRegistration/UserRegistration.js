@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import './UserRegistration.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-export default function UserRegistration() {
-    let navigate = useNavigate();
+
+export default function UserRegistration({ setShowLogin }) {
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
     let [avatar, setAvatar] = useState("");
@@ -15,9 +14,7 @@ export default function UserRegistration() {
     let [goldCrown, setGoldCrown] = useState(0);
     let [platinumCrown, setPlatinumCrown] = useState(0);
 
-    const goToLogin = () => {
-        navigate('/login')
-    };
+    
     const countries = [
     {
         id: 0,
@@ -57,6 +54,7 @@ export default function UserRegistration() {
             setSilverCrown(0)
             setGoldCrown(0)
             setPlatinumCrown(0)
+            setShowLogin(true)
         })
     }
     
@@ -121,7 +119,7 @@ export default function UserRegistration() {
 
             <div className='to-login-btn-container'>
                 <h3>Already have an account?</h3>
-                <button onClick={goToLogin} className='to-login-btn'>
+                <button onClick={() => setShowLogin(true)} className='to-login-btn'>
                     Login Account
                 </button>
             </div>
