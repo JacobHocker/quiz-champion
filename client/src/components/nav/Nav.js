@@ -3,10 +3,10 @@ import './Nav.css';
 import { NavLink as Link } from 'react-router-dom';
 import {AuthContext} from '../../Helpers/AuthContext';
 import axios from 'axios';
-
+import LogoSm from '../../assets/images/logos/quiz-champ-sm.png';
 
 export default function Nav() {
-    const { userId, authState, setAuthState } = useContext(AuthContext);
+    const { userId, setAuthState } = useContext(AuthContext);
     const [userInfo, setUserInfo] = useState({});
 
     useEffect(() => {
@@ -23,9 +23,11 @@ export default function Nav() {
     
     return (
         <div className='nav-bar-container'>
-            <Link to='/'>
-                <h3>Home</h3>
-            </Link>
+            <div className='nav-logo-section'>
+                <Link to='/'>
+                    <img src={LogoSm} alt='quiz-champ-sm' className='logo-sm-nav' />
+                </Link>
+            </div>
             <Link to='/quizzes'>
                 <h3>Quizzes</h3>
             </Link>
@@ -35,9 +37,10 @@ export default function Nav() {
             <Link to='/admin-post-question'>
                 <h3>Admin Post Question</h3>
             </Link>
+            
             <div className='user-nav-container'>
                 {userInfo.data && <h3>{userInfo.data.username}</h3>}
-
+                {userInfo.data && <img src={userInfo.data.avatar} className='nav-avatar' alt={userInfo.data.username} />}
                 <button onClick={logout}>Logout</button>
             </div>
             

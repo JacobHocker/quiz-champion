@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background-color: var(--bk);
-  color: white;
+  color: var(--text-dk);
 }
 
 
@@ -23,7 +23,7 @@ body {
   --accent-op: #8760d0b7;
 
   /* TEXT COLORS + VARIATIONS */
-  
+  --text-dk: rgb(65, 65, 65);
   /* GENERAL COLORS */
   --white: #fff;
   --black: #000;

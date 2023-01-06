@@ -5,13 +5,28 @@
     align-items: center;
 }
 .nav-bar-container a {
-    color: white;
+    color: var(--text-dk);
     text-decoration: none;
 }
 .nav-bar-container a:visited{
-    color: white;
+    color: var(--text-dk);
 }
 .nav-bar-container a:hover{
-    color: red;
+    color: var(--primary-dk);
     cursor: pointer;
+}
+.user-nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-avatar{
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+.logo-sm-nav{
+    width: 5rem;
 }
