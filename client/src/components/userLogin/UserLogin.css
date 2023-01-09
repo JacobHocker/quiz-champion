@@ -3,45 +3,65 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
+
 .user-login-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary);
 }
-.user-login-input{
+/* ! USER LOGIN INPUT */
+.auth-input{
     font-size: 1.5rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: var(--roboto-text);
+    color: var(--white);
     padding: 0.5rem;
-}
-.login-submit-btn{
     margin-top: 1rem;
-    background-color: var(--accent-op);
-    font-size: 1rem;
-    padding: 0.5rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: transparent;
+    border: 2px solid var(--secondary-var);
+    text-align: center;
+    border-radius: 2px;
+    resize: none;
+    transition: 0.15s ease-in-out;
 }
-.login-submit-btn:hover{
+.auth-input::placeholder{
+    font-family: var(--roboto-text);
+    color: var(--text-placeholder);
+}
+.auth-input:hover{
+    cursor: text;
+    border: 2px solid var(--white);
+}
+.auth-input:focus{
+    outline: none;
+}
+
+/* ! AUTH BUTTON */
+.auth-btn{
+    margin-top: 2rem;
+    background-color: transparent;
+    font-size: 1.25rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 2.5px solid var(--accent);
+    outline: none;
+    color: var(--text-lt);
+    transition: 0.1s ease-in-out;
+}
+.auth-btn:hover{
     background-color: var(--accent);
     cursor: pointer;
 }
 
+/* ! TO REGISTER */ 
 .to-register-btn-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.to-register-btn{
-    background-color: var(--primary-lt);
-    font-size: 1rem;
-    padding: 0.5rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.to-register-btn:hover{
-    cursor: pointer;
-    background-color: var(--primary-dk);
+    margin-top: 1rem;
 }

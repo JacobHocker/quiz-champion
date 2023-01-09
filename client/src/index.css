@@ -1,29 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 body {
   margin: 0;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background-color: var(--bk);
-  color: var(--text-dk);
+  font-family: var(--eb-text);
+  /* background-color: var(--bk); */
+  background-image: url("https://t3.ftcdn.net/jpg/01/85/75/08/360_F_185750874_rTbc977EBOkAS5a8lTCuwJYoUqwT0Zkh.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  color: var(--text-lt);
 }
 
 
 :root{
+  /* FONT FAMILIES */
+  --roboto-text: 'Roboto', sans-serif;
+  --eb-text: 'EB Garamond', serif;
   /* PRIMARY + VARIATIONS */
-  --primary-dk: #5680E9;
-  --primary-lt: #84CEEB;
+  --primary-dk: #44318D;
+  --primary-lt: #A4B3B6;
 
   /* SECONDARY + VARIATIONS */
-  --secondary: #5AB9EA;
+  --secondary: #8265A7;
+  --secondary-var: #8B80B0;
   
   /* BACKGROUND + VARIATIONS */
-  --bk: #C1C8E4;
-  --bk-darker: #adb4ce;
+  --bk: #2A1B3D;
+  --bk-darker: #8f8f94;
+  --bk-darkest: #6e6f74;
+  --bk-darkest-op:#aaabb8b9;
 
   /* ACCENTS + VARIATIONS */
-  --accent: #8860D0;
-  --accent-op: #8760d0b7;
+  --accent: #D93f87;
+  --accent-op: #d93f87b0;
 
   /* TEXT COLORS + VARIATIONS */
-  --text-dk: rgb(65, 65, 65);
+  --text-dk: #BEC8C8;
+  --text-lt: rgb(235, 232, 232);
+  --text-placeholder: rgb(165, 165, 165);
   /* GENERAL COLORS */
   --white: #fff;
   --black: #000;

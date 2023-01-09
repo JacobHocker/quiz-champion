@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './UserRegistration.css';
 import axios from 'axios';
-
+import AvatarModal from './AvatarModal';
 
 export default function UserRegistration({ setShowLogin }) {
     let [username, setUsername] = useState("");
@@ -13,6 +13,7 @@ export default function UserRegistration({ setShowLogin }) {
     let [silverCrown, setSilverCrown] = useState(0);
     let [goldCrown, setGoldCrown] = useState(0);
     let [platinumCrown, setPlatinumCrown] = useState(0);
+    let [showModal, setShowModal] = useState(false)
 
     
     const countries = [
@@ -59,70 +60,85 @@ export default function UserRegistration({ setShowLogin }) {
     }
     
     return (
-        <div className='user-registration-container'>
-            <div className='user-register-form'>
-                <label>Username</label>
-                <input 
-                autoComplete='off'
-                type='text'
-                className='create-user-input'
-                onChange={(e) => {setUsername(e.target.value)}}
-                placeholder='Username...'
-                />
-                <label>Password</label>
-                <input 
-                autoComplete='off'
-                type='password'
-                className='create-user-input'
-                onChange={(e) => {setPassword(e.target.value)}}
-                placeholder='Password...'
-                />
-                <label>Avatar</label>
-                <input 
-                autoComplete='off'
-                type='text'
-                className='create-user-input'
-                onChange={(e) => {setAvatar(e.target.value)}}
-                placeholder='Avatar...'
-                />
-                <label>Bio</label>
-                <textarea 
-                rows={10}
-                type='text'
-                className='create-user-text'
-                onChange={(e) => {setBio(e.target.value)}}
-                placeholder='Tell people about you'
-                />
-                <label>Select Country</label>
-                <select 
-                name='country'
-                className='create-user-select'
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                >
-                    {countries.map((country) => (
-                        <option
-                        key={country.id}
-                        className='create-user-option'
-                        value={country.countryImage}>
-                            {country.countryName}
-                        </option>
-                    ))}
-                </select>
-                
-                <div className='register-account-btn-container'>
-                    <button onClick={registerUser} className='register-submit-btn'>
-                        Register Your Account
-                    </button>
+            <div className='user-registration-container'>
+                { showModal === false ? 
+                <div>
+                    <div className='user-register-form'>
+                        <div className='reg-input-container'>
+                            <label>Username:</label>
+                            <input 
+                            autoComplete='off'
+                            type='text'
+                            className='auth-input'
+                            onChange={(e) => {setUsername(e.target.value)}}
+                            placeholder='Ex: {John123..}'
+                            />
+                        </div>
+                        <div className='reg-input-container'>
+                            <label>Password:</label>
+                            <input 
+                            autoComplete='off'
+                            type='password'
+                            className='auth-input'
+                            onChange={(e) => {setPassword(e.target.value)}}
+                            placeholder='Ex: {Password123..}'
+                            />
+                        </div>
+                        
+                        <div className='reg-input-container'>
+                            <label>Bio:</label>
+                            <textarea 
+                            rows={7}
+                            type='text'
+                            className='auth-input'
+                            onChange={(e) => {setBio(e.target.value)}}
+                            placeholder='Ex: {I enjoy reading..}'
+                            />
+                        </div>
+                        <div className='reg-input-container'>
+                            <label>Select Country:</label>
+                            <select 
+                            name='country'
+                            className='create-user-select'
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                            >
+                                {countries.map((country) => (
+                                    <option
+                                    key={country.id}
+                                    className='create-user-option'
+                                    value={country.countryImage}>
+                                        {country.countryName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className='reg-input-container'>
+                            <label>Choose Avatar:</label>
+                            <button onClick={() => { setShowModal(true)}} className='avatar-auth-btn'>
+                                Avatar Select...
+                            </button>
+                        </div>
+                        <div className='register-account-btn-container'>
+                            <button onClick={registerUser} className='auth-btn'>
+                                Register Your Account
+                            </button>
+                        </div>
+                    </div>
+                    <div className='to-login-btn-container'>
+                        <h1>Already have an account?</h1>
+                        <button onClick={() => setShowLogin(true)} className='auth-btn'>
+                            Login Account
+                        </button>
+                    </div>
                 </div>
+                :
+                <AvatarModal setShowModal={setShowModal} setAvatar={setAvatar} avatar={avatar}/>
+                }
+                
             </div>
-
-            <div className='to-login-btn-container'>
-                <h3>Already have an account?</h3>
-                <button onClick={() => setShowLogin(true)} className='to-login-btn'>
-                    Login Account
-                </button>
-            </div>
-        </div>
+            
+        
+        
     )
 }

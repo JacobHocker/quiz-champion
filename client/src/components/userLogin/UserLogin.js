@@ -34,24 +34,23 @@ export default function UserLogin({ setShowLogin }) {
         <div className='user-login-container'>
             <div className='user-login-form'>
                 <input 
-                className='user-login-input'
+                className='auth-input'
                 type='text' 
                 placeholder='Username' 
                 onChange={(e) => setUsername(e.target.value)}
                 />
                 <input 
-                className='user-login-input'
+                className='auth-input'
                 type='password' 
                 placeholder='Password' 
                 onChange={(e) => setPassword(e.target.value)}
                 />
-
-                <button className='login-submit-btn' onClick={loginUser}>Login Account</button>
+                <button className='auth-btn' onClick={loginUser}>Login Account</button>
             </div>
-
+            
             <div className='to-register-btn-container'>
-                <h3>Don't have an account?</h3>
-                <button onClick={() => setShowLogin(false)} className='to-register-btn'>Register An Account</button>
+                <h1>Don't have an account?</h1>
+                <button onClick={() => setShowLogin(false)} className='auth-btn'>Register An Account</button>
             </div>
         </div>
     )
