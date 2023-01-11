@@ -40,7 +40,7 @@ export default function Nav() {
             
             <div className='user-nav-container'>
                 {userInfo.data && <h3>{userInfo.data.username}</h3>}
-                {userInfo.data && <img src={userInfo.data.avatar} className='nav-avatar' alt={userInfo.data.username} />}
+                {userInfo.data && <Link to='/profile'><img src={userInfo.data.avatar} className='nav-avatar' alt={userInfo.data.username} /></Link> }
                 <button onClick={logout}>Logout</button>
             </div>
             

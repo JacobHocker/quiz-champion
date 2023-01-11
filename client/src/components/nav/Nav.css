@@ -1,18 +1,18 @@
 .nav-bar-container{
     display: flex;
-    background-color: var(--bk-darker);
+    background-color: var(--secondary-op);
     justify-content: space-evenly;
     align-items: center;
 }
 .nav-bar-container a {
-    color: var(--text-dk);
+    color: var(--text-lt);
     text-decoration: none;
 }
 .nav-bar-container a:visited{
-    color: var(--text-dk);
+    color: var(--text-lt);
 }
 .nav-bar-container a:hover{
-    color: var(--primary-dk);
+    color: var(--accent);
     cursor: pointer;
 }
 .user-nav-container{

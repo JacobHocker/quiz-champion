@@ -12,6 +12,8 @@ import UserLogin from './components/userLogin/UserLogin';
 import axios from 'axios';
 import { AuthContext } from './Helpers/AuthContext';
 import UserAuthContainer from './components/userAuthContainer/UserAuthContainer';
+import UserProfileContainer from './components/userProfileContainer/UserProfileContainer';
+
 
 
 export default function App() {
@@ -60,6 +62,7 @@ export default function App() {
               <Route element={<QuizDisplayContainer />} path='quiz/:id' />
               <Route element={<UserRegistration />} path='registration' />
               <Route element={<UserLogin  />} path='login' />
+              <Route element={<UserProfileContainer />} path='profile' />
               <Route element={<AdminPostQuizzes />} path='admin-post-quiz' />
               <Route element={<AdminPostQuestion />} path='admin-post-question' />
             </Routes>

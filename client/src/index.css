@@ -18,13 +18,22 @@ body {
   /* FONT FAMILIES */
   --roboto-text: 'Roboto', sans-serif;
   --eb-text: 'EB Garamond', serif;
+
   /* PRIMARY + VARIATIONS */
   --primary-dk: #44318D;
   --primary-lt: #A4B3B6;
 
+  --blue-primary-dk: #1F2833;
+  --blue-primary-dk-op: #1f283371;
+
   /* SECONDARY + VARIATIONS */
   --secondary: #8265A7;
+  --secondary-op: #8265a763;
   --secondary-var: #8B80B0;
+  --secondary-var-op: #8b80b080;
+
+  --blue-secondary: #45A29E;
+  --blue-secondary-op: #45a29d85;
   
   /* BACKGROUND + VARIATIONS */
   --bk: #2A1B3D;
@@ -35,6 +44,8 @@ body {
   /* ACCENTS + VARIATIONS */
   --accent: #D93f87;
   --accent-op: #d93f87b0;
+
+  --blue-accent: #66FCF1;
 
   /* TEXT COLORS + VARIATIONS */
   --text-dk: #BEC8C8;
