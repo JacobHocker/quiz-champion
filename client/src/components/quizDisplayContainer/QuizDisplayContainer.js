@@ -17,6 +17,7 @@ export default function QuizDisplayContainer() {
     let [questionList, setQuestionList] = useState([]);
     let [quizState, setQuizState] = useState("menu");
     let [score, setScore] = useState(0);
+    let [correctAnswers, setCorrectAnswers] = useState(0);
     let [questionCounter, setQuestionCounter] = useState(0);
 
     useEffect(() => {
@@ -31,7 +32,16 @@ export default function QuizDisplayContainer() {
         <div className='quiz-display-container'>
             {questionList.data && <ProgressBar progress={questionCounter} max={questionList.data.length} />}
             <div className='quiz-play-container'>
-                <QuizContext.Provider value={{ quizState, setQuizState, score, setScore, questionCounter, setQuestionCounter}}>
+                <QuizContext.Provider value={{ 
+                    quizState, 
+                    setQuizState, 
+                    score, 
+                    setScore, 
+                    questionCounter, 
+                    setQuestionCounter,
+                    correctAnswers,
+                    setCorrectAnswers
+                }}>
                     {quizState === "menu" && <QuizStart quizObject={quizObject} />}
                     {quizState === "play" && <QuizPlay questionList={questionList.data} />}
                     {quizState === "end" && <QuizEnd questionList={questionList.data} />}

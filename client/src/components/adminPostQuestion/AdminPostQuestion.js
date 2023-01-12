@@ -29,7 +29,7 @@ export default function AdminPostQuestion() {
     }
     return (
         <div className='create-question-container'>
-            
+            <div className='create-question-form'>
                 <label>Question Content</label>
                 <input 
                 autoComplete='off'
@@ -92,8 +92,8 @@ export default function AdminPostQuestion() {
                 className='post-question-input'
                 onChange={(e) => {setQuizId(e.target.value)}}
                 />
-                <button onClick={addQuestion}>Create Question</button>
-            
+                <button onClick={addQuestion} className='admin-btn'>Create Question</button>
+            </div>
         </div>
     )
 }

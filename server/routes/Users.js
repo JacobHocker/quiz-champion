@@ -8,7 +8,7 @@ const {sign} = require('jsonwebtoken');
 
 
 router.post("/", async (req, res) => {
-    const { username, password, bio, avatar, country, bronzeCrown, silverCrown, goldCrown, platinumCrown} = req.body;
+    const { username, password, bio, avatar, country, totalCrown} = req.body;
     bcrypt.hash(password, 10).then((hash) => {
         Users.create({
             username: username,
@@ -16,10 +16,7 @@ router.post("/", async (req, res) => {
             bio: bio,
             avatar: avatar,
             country: country,
-            bronzeCrown: bronzeCrown,
-            silverCrown: silverCrown,
-            goldCrown: goldCrown,
-            platinumCrown: platinumCrown,
+            totalCrown: totalCrown,
         })
         res.json("Success")
     })
@@ -42,6 +39,8 @@ router.post("/login", async (req, res) => {
         res.json({token: accessToken, username: username, id: user.id})
     })
 });
+
+
 
 router.get('/user', validateToken, (req, res) => {
     res.json(req.user);

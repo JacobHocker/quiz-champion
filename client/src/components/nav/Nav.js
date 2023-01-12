@@ -31,11 +31,8 @@ export default function Nav() {
             <Link to='/quizzes'>
                 <h3>Quizzes</h3>
             </Link>
-            <Link to='/admin-post-quiz'>
-                <h3>Admin Post Quiz</h3>
-            </Link>
-            <Link to='/admin-post-question'>
-                <h3>Admin Post Question</h3>
+            <Link to='/admin'>
+                <h3>Admin Page</h3>
             </Link>
             
             <div className='user-nav-container'>

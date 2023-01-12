@@ -22,24 +22,17 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        bronzeCrown: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        silverCrown: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        goldCrown: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        platinumCrown: {
+        totalCrown: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
         
     })
+    Users.associate = (models) => {
+        Users.hasMany(models.Scores,{
+            onDelete: 'cascade',
+        })
+    }
 
     return Users;
 }

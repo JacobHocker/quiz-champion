@@ -1,22 +1,22 @@
-.create-question-container{
+.create-cat-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 5rem;
 }
-.create-question-form{
+.create-cat-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.create-question-form label{
+.create-cat-form label{
     margin-top: 1rem;
     font-size: 1.75rem;
 }
 
-.create-question-form input{
+.create-cat-form input{
     font-size: 1.5rem;
     font-family: var(--roboto-text);
     color: var(--white);
@@ -30,14 +30,17 @@
     resize: none;
     transition: 0.15s ease-in-out;
 }
-.create-question-form input::placeholder{
+.create-cat-form input::placeholder{
     font-family: var(--roboto-text);
     color: var(--text-placeholder);
 }
-.create-question-form input:hover{
+.create-cat-form input:hover{
     cursor: text;
     border: 2px solid var(--white);
 }
-.create-question-form input:focus{
+.create-cat-form input:focus{
     outline: none;
+}
+.create-cat-form span{
+    color: red;
 }

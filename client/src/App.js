@@ -3,16 +3,15 @@ import {Routes, Route} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
-import AdminPostQuizzes from './components/adminPostQuizzes/AdminPostQuizzes';
 import QuizListContainer from './components/quizListContainer/QuizListContainer';
 import QuizDisplayContainer from './components/quizDisplayContainer/QuizDisplayContainer';
-import AdminPostQuestion from './components/adminPostQuestion/AdminPostQuestion';
 import UserRegistration from './components/userRegistration/UserRegistration';
 import UserLogin from './components/userLogin/UserLogin';
 import axios from 'axios';
 import { AuthContext } from './Helpers/AuthContext';
 import UserAuthContainer from './components/userAuthContainer/UserAuthContainer';
 import UserProfileContainer from './components/userProfileContainer/UserProfileContainer';
+import AdminContainer from './components/adminContainer/AdminContainer';
 
 
 
@@ -22,6 +21,7 @@ export default function App() {
     id: 0,
     status: false,
   });
+  const [userObj, setUserObj] = useState({})
   
   
   
@@ -43,13 +43,17 @@ export default function App() {
         
       }
     })
-  }, [])
+    axios.get(`http://localhost:2000/auth/userInfo/${authState.id}`)
+            .then ( (response) => {
+                setUserObj(response)
+        })
+  }, [authState.id])
   
   const userId = authState.id;
   
   return (
     <div className='App'>
-      <AuthContext.Provider value={{ authState, setAuthState, userId }}>
+      <AuthContext.Provider value={{ authState, setAuthState, userId, userObj }}>
         
         { authState.status === false ? 
             <UserAuthContainer />
@@ -63,8 +67,7 @@ export default function App() {
               <Route element={<UserRegistration />} path='registration' />
               <Route element={<UserLogin  />} path='login' />
               <Route element={<UserProfileContainer />} path='profile' />
-              <Route element={<AdminPostQuizzes />} path='admin-post-quiz' />
-              <Route element={<AdminPostQuestion />} path='admin-post-question' />
+              <Route element={<AdminContainer />} path='admin' />
             </Routes>
           </div>
         }

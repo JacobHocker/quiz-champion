@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        quizCategory: {
+        quizDifficulty: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
         Quizs.hasMany(models.Questions,{
             onDelete: 'cascade',
         })
+        Quizs.hasMany(models.Scores,{
+            onDelete: 'cascade',
+        })
     }
+    
     return Quizs
 }

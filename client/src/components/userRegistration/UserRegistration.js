@@ -9,10 +9,7 @@ export default function UserRegistration({ setShowLogin }) {
     let [avatar, setAvatar] = useState("");
     let [bio, setBio] = useState("");
     let [country, setCountry] = useState("");
-    let [bronzeCrown, setBronzeCrown] = useState(0);
-    let [silverCrown, setSilverCrown] = useState(0);
-    let [goldCrown, setGoldCrown] = useState(0);
-    let [platinumCrown, setPlatinumCrown] = useState(0);
+    let [totalCrown, setTotalCrown] = useState(0);
     let [showModal, setShowModal] = useState(false)
     let [avatarName, setAvatarName] = useState("");
     const avatarList = [
@@ -126,16 +123,10 @@ export default function UserRegistration({ setShowLogin }) {
             avatar: avatar,
             bio: bio,
             country: country,
-            bronzeCrown: bronzeCrown,
-            silverCrown: silverCrown,
-            goldCrown: goldCrown,
-            platinumCrown: platinumCrown
+            totalCrown: totalCrown
         })
         .then(() => { 
-            setBronzeCrown(0)
-            setSilverCrown(0)
-            setGoldCrown(0)
-            setPlatinumCrown(0)
+            setTotalCrown(0)
             setShowLogin(true)
         })
     }

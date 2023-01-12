@@ -16,7 +16,10 @@ const questionRouter = require('./routes/Questions')
 app.use("/questions", questionRouter)
 const userRouter = require('./routes/Users')
 app.use("/auth", userRouter)
-
+const catRouter = require('./routes/Cats')
+app.use("/categories", catRouter)
+const scoreRouter = require('./routes/Scores')
+app.use("/scores", scoreRouter)
 
 db.sequelize.sync().then(() => {
         app.listen(2000, () => {

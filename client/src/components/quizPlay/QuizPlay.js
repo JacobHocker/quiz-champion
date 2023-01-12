@@ -4,19 +4,19 @@ import './QuizPlay.css';
 import { QuizContext } from '../../Helpers/Contexts';
 
 export default function QuizPlay({ questionList }) {
-    const { score, setScore, setQuizState, questionCounter, setQuestionCounter } = useContext(QuizContext);
+    const { correctAnswers, setCorrectAnswers, setQuizState, questionCounter, setQuestionCounter } = useContext(QuizContext);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen, setOptionChosen] = useState("");
 
     const finishQuiz = () => {
         if(questionList[currentQuestion].answer === optionChosen) {
-            setScore(score + 1);
+            setCorrectAnswers(correctAnswers + 1);
         }
         setQuizState("end");
     }
     const nextQuestion = () => {
         if(questionList[currentQuestion].answer === optionChosen) {
-            setScore(score + 1);
+            setCorrectAnswers(correctAnswers + 1);
         }
         setCurrentQuestion(currentQuestion + 1);
         setQuestionCounter(questionCounter + 1);

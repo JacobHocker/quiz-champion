@@ -12,8 +12,9 @@ export default function UserProfileHeader({ user }) {
             boxShadow: "inset 0 0 0 1000px rgba(52.5, 73.5, 115.5,.85)"
         }}>
             <div className='user-profile-title'>
-                <img src={user.avatar} alt={user.username} className='user-profile-img'/>
                 <h1>{user.username}</h1>
+                <h1>Total Crowns: {user.totalCrown}</h1>
+                
             </div>
         </div>
     )

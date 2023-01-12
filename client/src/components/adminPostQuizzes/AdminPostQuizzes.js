@@ -11,15 +11,17 @@ export default function AdminPostQuizzes() {
     const initialValues = {
         quizName: "",
         quizImage: "",
-        quizCategory: "",
+        quizDifficulty: "",
         quizDescription: "",
+        catId: 0,
     }
 
     const validationSchema = Yup.object().shape({
         quizName: Yup.string().min(10).required("There must be a quiz name!"),
         quizImage: Yup.string().required("An Image for your quiz is required!"),
-        quizCategory: Yup.string().required("Category must be stated for your quiz!"),
-        quizDescription: Yup.string().min(30).max(500).required("Describe about the quiz!")
+        quizDifficulty: Yup.string().required("Difficulty must be stated for your quiz!"),
+        quizDescription: Yup.string().min(30).max(500).required("Describe about the quiz!"),
+        catId:  Yup.number().required()
     })
 
     const onSubmit = (data) => {
@@ -51,13 +53,13 @@ export default function AdminPostQuizzes() {
                         name='quizImage' 
                         placeholder='Quiz Image'
                     />
-                    <label>Quiz Category</label>
-                    <ErrorMessage name='quizCategory' component='span' />
+                    <label>Quiz Difficulty</label>
+                    <ErrorMessage name='quizDifficulty' component='span' />
                     <Field 
                         autoComplete='off'
                         id='input-create-quiz' 
-                        name='quizCategory' 
-                        placeholder='Quiz Category'
+                        name='quizDifficulty' 
+                        placeholder='Quiz Difficulty'
                     />
                     <label>Quiz Description</label>
                     <ErrorMessage name='quizDescription' component='span' />
@@ -67,8 +69,15 @@ export default function AdminPostQuizzes() {
                         name='quizDescription' 
                         placeholder='Quiz Description'
                     />
-
-                    <button type='submit'>Create Quiz</button>
+                    <label>Category ID</label>
+                    <ErrorMessage name='catId' component='span' />
+                    <Field
+                    autoComplete='off'
+                    id='input-create-quiz'
+                    type='number'
+                    name='catId'
+                    />
+                    <button type='submit' className='admin-btn'>Create Quiz</button>
                 </Form>
             </Formik>
         </div>
