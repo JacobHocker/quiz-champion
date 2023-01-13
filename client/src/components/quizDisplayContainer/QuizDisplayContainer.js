@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../../Helpers/AuthContext';
 import './QuizDisplayContainer.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -12,13 +13,15 @@ import { QuizContext } from '../../Helpers/Contexts';
 
 
 export default function QuizDisplayContainer() {
+    let { userId } = useContext(AuthContext);
     let { id } = useParams();
     let [quizObject, setQuizObject] = useState({});
     let [questionList, setQuestionList] = useState([]);
     let [quizState, setQuizState] = useState("menu");
-    let [score, setScore] = useState(0);
     let [correctAnswers, setCorrectAnswers] = useState(0);
     let [questionCounter, setQuestionCounter] = useState(0);
+    let [quizScore, setQuizScore] = useState(0);
+    let [scoreObj, setScoreObj] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:2000/quizzes/${id}`).then((response) => {
@@ -27,7 +30,17 @@ export default function QuizDisplayContainer() {
         axios.get(`http://localhost:2000/questions/${id}`).then((response) => {
             setQuestionList(response)
         })
-    },[id])
+        axios.get(`http://localhost:2000/scores/${id}/${userId}`).then((response) => {
+            if(response.data === undefined) {
+                setScoreObj([])
+            } else {
+                setScoreObj(response.data)
+            }
+            
+        })
+    },[id, userId])
+
+    console.log(scoreObj)
     return (
         <div className='quiz-display-container'>
             {questionList.data && <ProgressBar progress={questionCounter} max={questionList.data.length} />}
@@ -35,16 +48,18 @@ export default function QuizDisplayContainer() {
                 <QuizContext.Provider value={{ 
                     quizState, 
                     setQuizState, 
-                    score, 
-                    setScore, 
+                    quizScore, 
+                    setQuizScore, 
                     questionCounter, 
                     setQuestionCounter,
                     correctAnswers,
-                    setCorrectAnswers
+                    setCorrectAnswers,
+                    scoreObj,
+                    setScoreObj
                 }}>
                     {quizState === "menu" && <QuizStart quizObject={quizObject} />}
                     {quizState === "play" && <QuizPlay questionList={questionList.data} />}
-                    {quizState === "end" && <QuizEnd questionList={questionList.data} />}
+                    {quizState === "end" && <QuizEnd quizId={id} questionList={questionList.data} />}
                 </QuizContext.Provider>
             </div>
         </div>

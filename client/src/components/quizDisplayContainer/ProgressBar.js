@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+
 
 export default function ProgressBar({ progress, max}) {
 
@@ -7,8 +9,8 @@ export default function ProgressBar({ progress, max}) {
     
     const containerStyles = {
         height: 20,
-        width: '100%',
-        backgroundColor: "#e0e0de",
+        width: '50%',
+        backgroundColor: "#a4b3b6a9",
         borderRadius: 50,
         margin: 50
     }
@@ -16,7 +18,7 @@ export default function ProgressBar({ progress, max}) {
     const fillerStyles = {
         height: '100%',
         width: `${progressPercentage}%`,
-        backgroundColor: 'red',
+        backgroundColor: 'var(--blue-secondary)',
         transition: 'width 1s ease-in-out',
         borderRadius: 'inherit',
         textAlign: 'center'
@@ -25,7 +27,8 @@ export default function ProgressBar({ progress, max}) {
     const labelStyles = {
         padding: 5,
         color: 'white',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontFamily: 'var(--roboto-text)'
     }
     
     return (

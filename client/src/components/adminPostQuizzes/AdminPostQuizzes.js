@@ -20,8 +20,8 @@ export default function AdminPostQuizzes() {
         quizName: Yup.string().min(10).required("There must be a quiz name!"),
         quizImage: Yup.string().required("An Image for your quiz is required!"),
         quizDifficulty: Yup.string().required("Difficulty must be stated for your quiz!"),
-        quizDescription: Yup.string().min(30).max(500).required("Describe about the quiz!"),
-        catId:  Yup.number().required()
+        quizDescription: Yup.string().max(500).required("Describe about the quiz!"),
+        CatId:  Yup.number().required()
     })
 
     const onSubmit = (data) => {
@@ -70,12 +70,12 @@ export default function AdminPostQuizzes() {
                         placeholder='Quiz Description'
                     />
                     <label>Category ID</label>
-                    <ErrorMessage name='catId' component='span' />
+                    <ErrorMessage name='CatId' component='span' />
                     <Field
                     autoComplete='off'
                     id='input-create-quiz'
                     type='number'
-                    name='catId'
+                    name='CatId'
                     />
                     <button type='submit' className='admin-btn'>Create Quiz</button>
                 </Form>
