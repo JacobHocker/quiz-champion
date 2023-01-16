@@ -40,6 +40,7 @@ export default function QuizDisplayContainer() {
         })
     },[id, userId])
 
+    
     console.log(scoreObj)
     return (
         <div className='quiz-display-container'>

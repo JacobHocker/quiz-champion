@@ -11,7 +11,7 @@ export default function QuizEnd({ questionList, quizId }) {
     
     let navigate = useNavigate();
 
-    const { userId, userObj } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const { quizScore, setQuizScore, correctAnswers, scoreObj } = useContext(QuizContext);
 
     useEffect(() => {
@@ -46,15 +46,15 @@ export default function QuizEnd({ questionList, quizId }) {
     
     return (
         <div className='quiz-end-container'>
-            <h1>Quiz Completed</h1>
             { showResults === false ?
             <div className='return-to-quiz'>
+                <h1>Quiz Completed</h1>
                 <button className='auth-btn' onClick={addScore}>
                     See Results
                 </button>
             </div>
             :
-            <QuizResults  />
+            <QuizResults quizId={quizId} crownAmount={crownAmount}/>
             }
         </div>
     )

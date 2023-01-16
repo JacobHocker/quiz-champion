@@ -40,7 +40,11 @@ router.post("/login", async (req, res) => {
     })
 });
 
-
+router.put('/crowns', async (req, res) => {
+    const { totalCrown, id } = req.body
+    await Users.update({ totalCrown: totalCrown }, { where: { id: id }})
+    res.json(totalCrown)
+})
 
 router.get('/user', validateToken, (req, res) => {
     res.json(req.user);

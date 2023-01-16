@@ -47,7 +47,7 @@ export default function App() {
             .then ( (response) => {
                 setUserObj(response)
         })
-  }, [authState.id])
+  }, [authState.id, userObj])
   
   const userId = authState.id;
   
