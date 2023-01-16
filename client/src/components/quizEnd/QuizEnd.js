@@ -9,13 +9,15 @@ export default function QuizEnd({ questionList, quizId }) {
     const [showResults, setShowResults] = useState(false);
     const [crownAmount, setCrownAmount] = useState(0);
     
-    let navigate = useNavigate();
+    
 
     const { userId } = useContext(AuthContext);
-    const { quizScore, setQuizScore, correctAnswers, scoreObj } = useContext(QuizContext);
+    const { quizScore, setQuizScore, correctAnswers, scoreArr } = useContext(QuizContext);
+
 
     useEffect(() => {
         setQuizScore(Math.round((correctAnswers / questionList.length) * 100))
+
         if(quizScore >= 60 && quizScore <= 69) {
             setCrownAmount(1)
         } else if (quizScore >= 70 && quizScore <= 79) {
@@ -29,9 +31,11 @@ export default function QuizEnd({ questionList, quizId }) {
         } else {
             setCrownAmount(0)
         }
+        
     }, [quizScore])
     
     
+
     const addScore = () => {
         axios.post("http://localhost:2000/scores", {
             quizScore: quizScore,

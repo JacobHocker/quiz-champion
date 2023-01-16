@@ -21,7 +21,7 @@ export default function QuizDisplayContainer() {
     let [correctAnswers, setCorrectAnswers] = useState(0);
     let [questionCounter, setQuestionCounter] = useState(0);
     let [quizScore, setQuizScore] = useState(0);
-    let [scoreObj, setScoreObj] = useState([]);
+    let [scoreArr, setScoreArr] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:2000/quizzes/${id}`).then((response) => {
@@ -32,16 +32,16 @@ export default function QuizDisplayContainer() {
         })
         axios.get(`http://localhost:2000/scores/${id}/${userId}`).then((response) => {
             if(response.data === undefined) {
-                setScoreObj([])
+                setScoreArr([])
             } else {
-                setScoreObj(response.data)
+                setScoreArr(response)
             }
             
         })
     },[id, userId])
 
     
-    console.log(scoreObj)
+    
     return (
         <div className='quiz-display-container'>
             {questionList.data && <ProgressBar progress={questionCounter} max={questionList.data.length} />}
@@ -55,8 +55,8 @@ export default function QuizDisplayContainer() {
                     setQuestionCounter,
                     correctAnswers,
                     setCorrectAnswers,
-                    scoreObj,
-                    setScoreObj
+                    scoreArr,
+                    setScoreArr
                 }}>
                     {quizState === "menu" && <QuizStart quizObject={quizObject} />}
                     {quizState === "play" && <QuizPlay questionList={questionList.data} />}

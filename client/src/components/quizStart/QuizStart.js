@@ -3,7 +3,7 @@ import './QuizStart.css';
 import { QuizContext } from '../../Helpers/Contexts';
 
 export default function QuizStart({ quizObject }) {
-    const { setQuizState, questionCounter, setQuestionCounter, scoreObj } = useContext(QuizContext);
+    const { setQuizState, questionCounter, setQuestionCounter } = useContext(QuizContext);
 
     const startQuiz = () => {
         setQuizState("play")

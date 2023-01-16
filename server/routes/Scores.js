@@ -10,6 +10,7 @@ router.get('/:quizId/:userId', async (req, res) => {
     res.json(scores);
 });
 
+
 router.post("/", async (req, res) => {
     const score = req.body;
     await Scores.create(score);
