@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Helpers/AuthContext';
 import axios from 'axios';
 import { QuizContext } from '../../Helpers/Contexts';
-import { useNavigate } from 'react-router-dom';
 import QuizResults from '../quizResults/QuizResults';
 
 export default function QuizEnd({ questionList, quizId }) {
@@ -12,7 +11,7 @@ export default function QuizEnd({ questionList, quizId }) {
     
 
     const { userId } = useContext(AuthContext);
-    const { quizScore, setQuizScore, correctAnswers, scoreArr } = useContext(QuizContext);
+    const {  quizScore, setQuizScore, correctAnswers } = useContext(QuizContext);
 
 
     useEffect(() => {
@@ -43,7 +42,10 @@ export default function QuizEnd({ questionList, quizId }) {
             QuizId: quizId,
             UserId: userId
         })
-        .then(() => { setShowResults(true) })
+        .then(() => { 
+            setShowResults(true) 
+            
+        })
     }
     
     
@@ -58,7 +60,7 @@ export default function QuizEnd({ questionList, quizId }) {
                 </button>
             </div>
             :
-            <QuizResults quizId={quizId} crownAmount={crownAmount}/>
+            <QuizResults quizId={quizId} crownAmount={crownAmount} setCrownAmount={setCrownAmount}/>
             }
         </div>
     )

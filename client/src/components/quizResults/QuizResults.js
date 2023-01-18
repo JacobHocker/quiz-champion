@@ -4,65 +4,50 @@ import { QuizContext } from '../../Helpers/Contexts';
 import { AuthContext } from '../../Helpers/AuthContext';
 import axios from 'axios';
 
-export default function QuizResults({ quizId, crownAmount }) {
-    const [scoreSaved, setScoreSaved] = useState(false);
-    const [retakeShow, setRetakeShow] = useState(true);
+export default function QuizResults({  crownAmount, setCrownAmount }) {
+    const [secondAttemptCrowns, setSecondAttemptCrowns] = useState(0);
     let navigate = useNavigate();
-    const { quizScore, scoreArr, setQuizState, setQuizScore, setCorrectAnswers, setQuestionCounter } = useContext(QuizContext);
-    const { userId, userObj, setUserObj } = useContext(AuthContext);
-
-    const returnToQuizzes = () => {
-        navigate('/quizzes')
-    }
-    const retakeQuiz = () => {
-        setQuizState("menu");
-        setQuizScore(0);
-        setQuestionCounter(0);
-        setCorrectAnswers(0);
-    }
-    
-    const saveCrowns = () => {
-        let totalCrown = userObj.data.totalCrown + crownAmount
-        axios.put("http://localhost:2000/auth/crowns", {totalCrown: totalCrown, id: userId})
-            .then(() => {
-                setScoreSaved(true)
-            })
-    }
+    const { quizScore, scoreArr} = useContext(QuizContext);
+    const { userId, userObj } = useContext(AuthContext);
 
     useEffect(() => {
-        if( crownAmount === 5) {
-            setRetakeShow(false)
-            saveCrowns()
+        if(scoreArr.data.length === 1) {
+            if(scoreArr.data[0].crownAmount >= crownAmount) {
+                setCrownAmount(0)
+            } else if (scoreArr.data[0].crownAmount < crownAmount) {
+                setSecondAttemptCrowns(crownAmount - scoreArr.data[0].crownAmount)
+            }
         }
         
-    }, [crownAmount])
+    }, [scoreArr.data])
+    
+    const saveAndReturn = () => {
+        let totalCrown = userObj.data.totalCrown + crownAmount
+        let totalCrownTwo = userObj.data.totalCrown + secondAttemptCrowns
+
+        if (scoreArr.data.length === 0) {
+            axios.put("http://localhost:2000/auth/crowns", 
+            {totalCrown: totalCrown, id: userId})
+            .then(() => {
+                navigate('/quizzes')
+            })
+        } else if (scoreArr.data.length === 1) {
+            axios.put("http://localhost:2000/auth/crowns", 
+            {totalCrown: totalCrownTwo, id: userId})
+            .then(() => {
+                navigate('/quizzes')
+            })
+        }
+    }
     
     return (
         <div className='quiz-results-container'>
             <div className='quiz-results'>
-                <h1>Score: {quizScore}</h1>
+                <h1>Score: {quizScore}%</h1>
                 <h1>Crowns Recieved: {crownAmount}</h1>
             </div>
-            <div className='save-scores'>
-                { scoreSaved === true ? 
-                <h1>Your crowns have been saved!</h1>
-                :
-                <button className='auth-btn' onClick={saveCrowns}>
-                    Save Your Crowns 
-                </button>
-                }
-            </div>
-            <div className='retake-quiz'>
-                { retakeShow === true ?
-                <button onClick={retakeQuiz} className='auth-btn'>
-                    Retake Quiz
-                </button>
-                :
-                <h1>You have gotten the highest score! Cannot retake quiz!</h1>
-                }
-            </div>
             <div className='return-to-quiz-container'>
-                <button className='auth-btn' onClick={returnToQuizzes}>
+                <button className='auth-btn' onClick={saveAndReturn}>
                     Return to Quizzes
                 </button>
             </div>

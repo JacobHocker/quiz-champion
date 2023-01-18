@@ -4,7 +4,7 @@ import './QuizDisplayContainer.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProgressBar from './ProgressBar';
-import QuizStart from '../quizStart/QuizStart';
+import QuizMenu from '../quizMenu/QuizMenu';
 import QuizPlay from '../quizPlay/QuizPlay';
 import QuizEnd from '../quizEnd/QuizEnd';
 import { QuizContext } from '../../Helpers/Contexts';
@@ -22,6 +22,7 @@ export default function QuizDisplayContainer() {
     let [questionCounter, setQuestionCounter] = useState(0);
     let [quizScore, setQuizScore] = useState(0);
     let [scoreArr, setScoreArr] = useState([]);
+    
 
     useEffect(() => {
         axios.get(`http://localhost:2000/quizzes/${id}`).then((response) => {
@@ -30,17 +31,15 @@ export default function QuizDisplayContainer() {
         axios.get(`http://localhost:2000/questions/${id}`).then((response) => {
             setQuestionList(response)
         })
-        axios.get(`http://localhost:2000/scores/${id}/${userId}`).then((response) => {
-            if(response.data === undefined) {
-                setScoreArr([])
-            } else {
-                setScoreArr(response)
-            }
-            
-        })
-    },[id, userId])
+        
+    },[id])
 
-    
+    useEffect(() => {
+        axios.get(`http://localhost:2000/scores/${id}/${userId}`).then((response) => {
+            setScoreArr(response)
+        })
+        
+    }, [id, userId])
     
     return (
         <div className='quiz-display-container'>
@@ -56,9 +55,9 @@ export default function QuizDisplayContainer() {
                     correctAnswers,
                     setCorrectAnswers,
                     scoreArr,
-                    setScoreArr
+                    setScoreArr, 
                 }}>
-                    {quizState === "menu" && <QuizStart quizObject={quizObject} />}
+                    {quizState === "menu" && <QuizMenu quizObject={quizObject} scoreArr={scoreArr} />}
                     {quizState === "play" && <QuizPlay questionList={questionList.data} />}
                     {quizState === "end" && <QuizEnd quizId={id} questionList={questionList.data} />}
                 </QuizContext.Provider>

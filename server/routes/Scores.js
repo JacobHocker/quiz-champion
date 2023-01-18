@@ -6,7 +6,7 @@ const { Scores } = require("../models");
 router.get('/:quizId/:userId', async (req, res) => {
     const quizId = req.params.quizId;
     const userId = req.params.userId
-    const scores = await Scores.findAll({ where: {QuizId: quizId} && {UserId: userId}});
+    const scores = await Scores.findAll({ where: {QuizId: quizId, UserId: userId} });
     res.json(scores);
 });
 

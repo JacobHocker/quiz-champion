@@ -50,10 +50,10 @@ export default function App() {
   }, [authState.id, userObj])
   
   const userId = authState.id;
-  
+  const username = authState.username;
   return (
     <div className='App'>
-      <AuthContext.Provider value={{ authState, setAuthState, userId, userObj }}>
+      <AuthContext.Provider value={{ authState, setAuthState, userId, username, userObj }}>
         
         { authState.status === false ? 
             <UserAuthContainer />
