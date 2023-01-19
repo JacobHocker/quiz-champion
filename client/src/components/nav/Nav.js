@@ -24,20 +24,24 @@ export default function Nav() {
     return (
         <div className='nav-bar-container'>
             <div className='nav-logo-section'>
-                <Link to='/'>
+                <Link to='/' className='nav-image-link'>
                     <img src={LogoSm} alt='quiz-champ-sm' className='logo-sm-nav' />
                 </Link>
             </div>
-            <Link to='/quizzes'>
+            <Link to='/quizzes' className='nav-link'>
                 <h3>Quizzes</h3>
             </Link>
-            <Link to='/admin'>
-                <h3>Admin Page</h3>
+            <Link to='/admin' className='nav-link'>
+                <h3>Admin</h3>
             </Link>
             
             <div className='user-nav-container'>
-                {userInfo.data && <h3>{userInfo.data.username}</h3>}
-                {userInfo.data && <Link to='/profile'><img src={userInfo.data.avatar} className='nav-avatar' alt={userInfo.data.username} /></Link> }
+                {/* {userInfo.data && <h3>{userInfo.data.username}</h3>} */}
+                {userInfo.data && 
+                <Link to='/profile' className='nav-image-link'>
+                    <img src={userInfo.data.avatar} className='nav-avatar' alt={userInfo.data.username} />
+                </Link> 
+                }
                 <button onClick={logout}>Logout</button>
             </div>
             

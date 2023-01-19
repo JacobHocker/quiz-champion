@@ -4,6 +4,7 @@ import { QuizContext } from '../../Helpers/Contexts';
 import { AuthContext } from '../../Helpers/AuthContext';
 
 
+
 export default function QuizMenu({ quizObject, scoreArr }) {
     const [highScore, setHighScore] = useState(0);
     const [highCrown, setHighCrowns] = useState(0);

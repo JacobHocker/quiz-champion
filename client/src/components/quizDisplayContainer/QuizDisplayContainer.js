@@ -43,12 +43,20 @@ export default function QuizDisplayContainer() {
     
     return (
         <div className='quiz-display-container'>
-            {questionList.data && <ProgressBar progress={questionCounter} max={questionList.data.length} />}
+            {questionList.data && 
+            quizState === "play" ?
+            <div className='progress-bar-container'>
+                <ProgressBar progress={questionCounter} max={questionList.data.length} />
+            </div>
+            :
+            <div></div>
+            }
             <div className='quiz-play-container'>
                 <QuizContext.Provider value={{ 
                     quizState, 
                     setQuizState, 
                     quizScore, 
+                    questionList,
                     setQuizScore, 
                     questionCounter, 
                     setQuestionCounter,

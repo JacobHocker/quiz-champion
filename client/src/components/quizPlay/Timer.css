@@ -1,0 +1,14 @@
+.timer-container{
+    background-color: var(--grey-op);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid var(--blue-accent);
+    border-radius: 50%;
+}
+.timer-display{
+    font-family: var(--number-txt);
+    color: var(--blue-accent);
+}

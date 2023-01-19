@@ -2,12 +2,15 @@ import React, {useState, useContext} from 'react';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import './QuizPlay.css';
 import { QuizContext } from '../../Helpers/Contexts';
+import Timer from './Timer';
+
 
 export default function QuizPlay({ questionList }) {
     const { correctAnswers, setCorrectAnswers, setQuizState, questionCounter, setQuestionCounter } = useContext(QuizContext);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen, setOptionChosen] = useState("");
-
+    const [counter, setCounter] = useState(30);
+    
     const finishQuiz = () => {
         if(questionList[currentQuestion].answer === optionChosen) {
             setCorrectAnswers(correctAnswers + 1);
@@ -21,11 +24,21 @@ export default function QuizPlay({ questionList }) {
         setCurrentQuestion(currentQuestion + 1);
         setQuestionCounter(questionCounter + 1);
         setOptionChosen("");
+        setCounter(30)
     }
     
     return (
         <div className='quiz-play-container'>
+            <Timer 
+            counter={counter} 
+            setCounter={setCounter} 
+            currentQuestion={currentQuestion}
+            setOptionChosen={setOptionChosen}
+            finishQuiz={finishQuiz}
+            nextQuestion={nextQuestion}
+            />
             <div className='quiz-play-question'>
+                
                 <h1>{questionList[currentQuestion].questionContent}</h1>
                 {questionList[currentQuestion].questionImage === "N/A" ?
                 <div></div> :

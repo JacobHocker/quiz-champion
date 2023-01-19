@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 body {
   margin: 0;
-  font-family: var(--eb-text);
+  font-family: var(--roboto-text);
   /* background-color: var(--bk); */
   background-image: url("https://t3.ftcdn.net/jpg/01/85/75/08/360_F_185750874_rTbc977EBOkAS5a8lTCuwJYoUqwT0Zkh.jpg");
   background-size: cover;
@@ -18,7 +21,9 @@ body {
   /* FONT FAMILIES */
   --roboto-text: 'Roboto', sans-serif;
   --eb-text: 'EB Garamond', serif;
-
+  --header-txt: 'Cairo', sans-serif; 
+  --number-txt: 'Orbitron', san-serif;
+  
   /* PRIMARY + VARIATIONS */
   --primary-dk: #44318D;
   --primary-lt: #A4B3B6;
@@ -51,7 +56,9 @@ body {
   --text-dk: #BEC8C8;
   --text-lt: rgb(235, 232, 232);
   --text-placeholder: rgb(165, 165, 165);
+
   /* GENERAL COLORS */
   --white: #fff;
   --black: #000;
+  --grey-op: rgba(53, 53, 53, 0.692);
 }
