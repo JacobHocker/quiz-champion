@@ -1,31 +1,57 @@
-.quiz-list-container{
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    gap: 1.25rem;
-    
+/* QUIZ LIST DISPLAY PAGE */
+.quiz-list-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* QUIZ LIST HEADER */
+.quiz-list-header h1{
+    font-family: var(--number-txt);
+}
+.blue-btn{
+    padding: 1rem;
+    outline: none;
+    background-color: transparent;
+    border: 2px solid var(--neon-lt-blue-accent);
+    font-size: 1rem;
+    color: white;
+    transition: 0.15s ease-in-out;
+}
+/*QUIZ CARD AREA */
+.quiz-list-container{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 1.25rem; 
+}
 
+/* QUIZ CARD WHOLE */
 .quiz-list-card{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-image: linear-gradient(to bottom right,var(--primary-dk), var(--blue-secondary), var(--primary-dk));
+    background-image: linear-gradient(to bottom,var(--primary-dk), var(--blue-secondary), var(--primary-dk));
+    transition: 0.05s ease-in-out;
 }
 .quiz-list-card:hover{
     cursor: pointer;
+    transform: scale(105%);
 }
 
+/* CARD HEADER */
 .quiz-card-header{
-    font-family: var(--header-txt);
+    font-family: var(--number-txt);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+/*CARD THUMBNAIL */
 .quiz-thumbnail-container{
     width: 100%;
 }
@@ -35,4 +61,32 @@
     object-fit: cover;
     object-position: center;
     border-radius: 4px;
+}
+
+/* CARD BODY AND DIFFICULTY */
+.quiz-card-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.difficulty-display{
+    font-family: var(--header-txt);
+}
+.star-container{
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.easy-star{
+    color: limegreen;
+    font-size: 1.35rem;
+}
+.medium-star{
+    color: gold;
+    font-size: 1.35rem;
+}
+.hard-star{
+    color: #8b0000;
+    font-size: 1.35rem;
 }

@@ -37,6 +37,7 @@ body {
   --secondary-var: #8B80B0;
   --secondary-var-op: #8b80b080;
 
+  --neon-blue-secondary: #190061;
   --blue-secondary: #45A29E;
   --blue-secondary-op: #45a29d85;
   
@@ -51,6 +52,8 @@ body {
   --accent-op: #d93f87b0;
 
   --blue-accent: #66FCF1;
+  --neon-lt-blue-accent: #3500D3;
+  --neon-dk-blue-accent: #240090;
 
   /* TEXT COLORS + VARIATIONS */
   --text-dk: #BEC8C8;
@@ -62,3 +65,5 @@ body {
   --black: #000;
   --grey-op: rgba(53, 53, 53, 0.692);
 }
+
+/* GENERAL STYLES */

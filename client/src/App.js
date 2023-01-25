@@ -12,6 +12,7 @@ import { AuthContext } from './Helpers/AuthContext';
 import UserAuthContainer from './components/userAuthContainer/UserAuthContainer';
 import UserProfileContainer from './components/userProfileContainer/UserProfileContainer';
 import AdminContainer from './components/adminContainer/AdminContainer';
+import QuizRuleContainer from './components/quizRuleContainer/QuizRuleContainer';
 
 
 
@@ -64,6 +65,7 @@ export default function App() {
               <Route element={<Home />} path='/' />
               <Route element={<QuizListContainer />} path='quizzes' />
               <Route element={<QuizDisplayContainer />} path='quiz/:id' />
+              <Route element={<QuizRuleContainer />} path='rules-rewards-info' />
               <Route element={<UserRegistration />} path='registration' />
               <Route element={<UserLogin  />} path='login' />
               <Route element={<UserProfileContainer />} path='profile' />
